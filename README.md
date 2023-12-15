@@ -30,7 +30,7 @@ Initialize your project:
 ```sh
 mkdir myproject
 cd myproject
-jb init
+jb-ng init
 ```
 
 The existence of the `jsonnetfile.json` file means your directory is now a
@@ -41,7 +41,7 @@ _Note that your dependency need not be initialized with a `jsonnetfile.json`.
 If it is not, it is assumed it has no transitive dependencies._
 
 ```sh
-jb install https://github.com/anguslees/kustomize-libsonnet
+jb-ng install https://github.com/anguslees/kustomize-libsonnet
 ```
 
 Now write `myconfig.jsonnet`, which can import a file from that package.
@@ -63,7 +63,7 @@ To depend on a package that is in a subtree of a Github repo (this package also
 happens to bring in a transitive dependency):
 
 ```sh
-jb install https://github.com/prometheus-operator/prometheus-operator/jsonnet/prometheus-operator
+jb-ng install https://github.com/prometheus-operator/prometheus-operator/jsonnet/prometheus-operator
 ```
 
 _Note that if you are copy pasting from the Github website's address bar,
@@ -74,11 +74,8 @@ the same way, with its dependencies fetched automatically.
 
 ## All command line flags
 
-[embedmd]: # "_output/help.txt"
-
-```txt
-$ jb -h
-usage: jb [<flags>] <command> [<args> ...]
+```bash
+usage: jb-ng [<flags>] <command> [<args> ...]
 
 A jsonnet package manager
 
@@ -97,6 +94,21 @@ Commands:
   init
     Initialize a new empty jsonnetfile
 
+  registry add [<name>] [<description>] [<url>] [<file>]
+    Add a new registry
+
+  registry rm [<name>]
+    Remove a registry
+
+  registry update
+    Update registry data
+
+  registry list
+    List registries
+
+  registry search [<flags>] [<query>]
+    Search package in registries
+
   install [<flags>] [<uris>...]
     Install new dependencies. Existing ones are silently skipped
 
@@ -105,8 +117,6 @@ Commands:
 
   rewrite
     Automatically rewrite legacy imports to absolute ones
-
-
 ```
 
 ## Design
