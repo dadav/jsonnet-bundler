@@ -23,7 +23,7 @@ import (
 	"github.com/pkg/errors"
 	"gopkg.in/alecthomas/kingpin.v2"
 
-	"github.com/jsonnet-bundler/jsonnet-bundler/pkg"
+	"github.com/dadav/jsonnet-bundler-ng/pkg"
 )
 
 const (
@@ -39,7 +39,7 @@ const (
 	registryRemoveActionName = "rm"
 )
 
-var Version = "dev"
+var Version = "0.1.0"
 
 func main() {
 	os.Exit(Main())

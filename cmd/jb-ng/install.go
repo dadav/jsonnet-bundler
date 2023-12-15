@@ -16,7 +16,6 @@ package main
 
 import (
 	"encoding/json"
-	"io/ioutil"
 	"log"
 	"os"
 	"path/filepath"
@@ -25,10 +24,10 @@ import (
 	"github.com/pkg/errors"
 	"gopkg.in/alecthomas/kingpin.v2"
 
-	"github.com/jsonnet-bundler/jsonnet-bundler/pkg"
-	"github.com/jsonnet-bundler/jsonnet-bundler/pkg/jsonnetfile"
-	v1 "github.com/jsonnet-bundler/jsonnet-bundler/spec/v1"
-	"github.com/jsonnet-bundler/jsonnet-bundler/spec/v1/deps"
+	"github.com/dadav/jsonnet-bundler-ng/pkg"
+	"github.com/dadav/jsonnet-bundler-ng/pkg/jsonnetfile"
+	v1 "github.com/dadav/jsonnet-bundler-ng/spec/v1"
+	"github.com/dadav/jsonnet-bundler-ng/spec/v1/deps"
 )
 
 func installCommand(dir, jsonnetHome string, uris []string, single bool, legacyName string) int {
@@ -36,13 +35,13 @@ func installCommand(dir, jsonnetHome string, uris []string, single bool, legacyN
 		dir = "."
 	}
 
-	jbfilebytes, err := ioutil.ReadFile(filepath.Join(dir, jsonnetfile.File))
+	jbfilebytes, err := os.ReadFile(filepath.Join(dir, jsonnetfile.File))
 	kingpin.FatalIfError(err, "failed to load jsonnetfile")
 
 	jsonnetFile, err := jsonnetfile.Unmarshal(jbfilebytes)
 	kingpin.FatalIfError(err, "")
 
-	jblockfilebytes, err := ioutil.ReadFile(filepath.Join(dir, jsonnetfile.LockFile))
+	jblockfilebytes, err := os.ReadFile(filepath.Join(dir, jsonnetfile.LockFile))
 	if !os.IsNotExist(err) {
 		kingpin.FatalIfError(err, "failed to load lockfile")
 	}
@@ -113,7 +112,7 @@ func writeJSONFile(name string, d interface{}) error {
 	}
 	b = append(b, []byte("\n")...)
 
-	return ioutil.WriteFile(name, b, 0644)
+	return os.WriteFile(name, b, 0644)
 }
 
 func writeChangedJsonnetFile(originalBytes []byte, modified *v1.JsonnetFile, path string) error {

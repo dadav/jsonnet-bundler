@@ -17,7 +17,7 @@ package pkg
 import (
 	"testing"
 
-	"github.com/jsonnet-bundler/jsonnet-bundler/spec/v1/deps"
+	"github.com/dadav/jsonnet-bundler-ng/spec/v1/deps"
 )
 
 func TestKnown(t *testing.T) {

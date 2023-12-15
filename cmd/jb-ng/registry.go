@@ -21,7 +21,7 @@ import (
 	"strings"
 	"text/tabwriter"
 
-	"github.com/jsonnet-bundler/jsonnet-bundler/pkg"
+	"github.com/dadav/jsonnet-bundler-ng/pkg"
 	"gopkg.in/alecthomas/kingpin.v2"
 )
 

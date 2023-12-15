@@ -18,8 +18,8 @@ import (
 
 	kingpin "gopkg.in/alecthomas/kingpin.v2"
 
-	"github.com/jsonnet-bundler/jsonnet-bundler/pkg/jsonnetfile"
-	"github.com/jsonnet-bundler/jsonnet-bundler/tool/rewrite"
+	"github.com/dadav/jsonnet-bundler-ng/pkg/jsonnetfile"
+	"github.com/dadav/jsonnet-bundler-ng/tool/rewrite"
 )
 
 func rewriteCommand(dir, vendorDir string) int {
