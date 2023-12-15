@@ -39,8 +39,6 @@ const (
 	registryRemoveActionName = "rm"
 )
 
-var Version = "0.1.0"
-
 func main() {
 	os.Exit(Main())
 }
