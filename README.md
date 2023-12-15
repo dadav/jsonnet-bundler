@@ -11,7 +11,7 @@ go install -a github.com/dadav/jsonnet-bundler-ng/cmd/jb-ng@latest
 
 ## Package Install
 
-- [Arch Linux AUR](https://aur.archlinux.org/packages/jsonnet-bundler-bin)
+- [Arch Linux AUR](https://aur.archlinux.org/packages/jsonnet-bundler-ng-bin)
 
 ## Features
 
