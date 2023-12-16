@@ -44,8 +44,8 @@ func New() JsonnetFile {
 // jsonFile is the json representation of a JsonnetFile, which is different for
 // compatibility reasons.
 type jsonFile struct {
-	Version       uint              `json:"version"`
 	Dependencies  []deps.Dependency `json:"dependencies"`
+	Version       uint              `json:"version"`
 	LegacyImports bool              `json:"legacyImports"`
 }
 
@@ -84,7 +84,7 @@ func (jf JsonnetFile) MarshalJSON() ([]byte, error) {
 	})
 
 	if s.Dependencies == nil {
-		s.Dependencies = make([]deps.Dependency, 0, 0)
+		s.Dependencies = make([]deps.Dependency, 0)
 	}
 
 	return json.Marshal(s)
